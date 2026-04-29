@@ -1,0 +1,447 @@
+/* ==========================================================
+   COMSATS University Digital Notice Board – style.css
+   ========================================================== */
+
+/* ---------- Custom Properties (Design Tokens) ---------- */
+:root {
+  --primary: #1a3a6b;
+  --secondary: #2563a8;
+  --accent: #f5a623;
+  --text: #1f2937;
+  --bg: #f0f4f9;
+  --card-bg: #fff;
+  --footer-bg: #111827;
+  --footer-text: #d1d5db;
+  --table-header: #1a3a6b;
+  --table-stripe: #e8eef7;
+  --border: #cbd5e1;
+  --input-focus: #2563a8;
+  --nav-height: 64px;
+  --radius: 8px;
+  --shadow: 0 2px 12px rgb(26 58 107 / 10%);
+  --transition: 0.25s ease;
+}
+
+/* ---------- Reset & Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+  padding: 2rem 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+a {
+  color: var(--secondary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--primary);
+  margin-bottom: 0.75rem;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+/* ---------- Navbar ---------- */
+.navbar {
+  background-color: var(--primary);
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 25%);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar .brand {
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 0.25rem;
+}
+
+.navbar ul li a {
+  color: #d1d5db;
+  padding: 0.45rem 0.9rem;
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  transition: background-color var(--transition), color var(--transition);
+  display: block;
+}
+
+.navbar ul li a:hover,
+.navbar ul li a.active {
+  background-color: var(--secondary);
+  color: #fff;
+  text-decoration: none;
+}
+
+/* ---------- Hero / Page Header ---------- */
+.page-header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  color: #fff;
+  padding: 2.5rem 2rem;
+  border-radius: var(--radius);
+  margin-bottom: 2rem;
+}
+
+.page-header h1 {
+  color: #fff;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.page-header p {
+  color: rgb(255 255 255 / 85%);
+  margin: 0;
+}
+
+/* ---------- Cards (Home Announcements) ---------- */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.card {
+  background-color: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+  border-left: 4px solid var(--accent);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgb(26 58 107 / 18%);
+}
+
+.card .card-date {
+  font-size: 0.8rem;
+  color: #6b7280;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.card h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.5rem;
+}
+
+.card p {
+  font-size: 0.92rem;
+  color: #4b5563;
+  margin: 0;
+}
+
+.card .badge {
+  display: inline-block;
+  margin-top: 0.75rem;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  background-color: #dbeafe;
+  color: var(--primary);
+}
+
+/* ---------- Tables ---------- */
+.table-wrapper {
+  overflow-x: auto;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-top: 1.5rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--card-bg);
+  font-size: 0.93rem;
+}
+
+table thead {
+  background-color: var(--table-header);
+  color: #fff;
+}
+
+table thead th {
+  padding: 0.85rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+table tbody td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+
+table tbody tr:nth-child(even) {
+  background-color: var(--table-stripe);
+}
+
+table tbody tr:hover {
+  background-color: #dbeafe;
+  transition: background-color var(--transition);
+}
+
+.status-badge {
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.status-active {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.status-closed {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.status-upcoming {
+  background-color: #fef9c3;
+  color: #854d0e;
+}
+
+/* ---------- Admissions Sections ---------- */
+.section-block {
+  background-color: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem 1.75rem;
+  margin-bottom: 1.75rem;
+}
+
+.section-block h2 {
+  font-size: 1.2rem;
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.section-block ul {
+  padding-left: 1.25rem;
+}
+
+.section-block ul li {
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+/* ---------- Contact Page ---------- */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.contact-info {
+  background-color: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.75rem;
+}
+
+.contact-info h2 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.contact-info p {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin-bottom: 0.85rem;
+  font-size: 0.93rem;
+  color: #374151;
+}
+
+.contact-info strong {
+  min-width: 70px;
+  color: var(--primary);
+}
+
+/* ---------- Contact Form ---------- */
+.contact-form {
+  background-color: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.75rem;
+}
+
+.contact-form h2 {
+  margin-bottom: 1.25rem;
+  font-size: 1.2rem;
+}
+
+.form-group {
+  margin-bottom: 1.1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.6rem 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.93rem;
+  background-color: #f8fafc;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  font-family: inherit;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 130px;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--input-focus);
+  box-shadow: 0 0 0 3px rgb(37 99 168 / 15%);
+}
+
+.btn-submit {
+  background-color: var(--secondary);
+  color: #fff;
+  border: none;
+  padding: 0.7rem 1.6rem;
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--transition), transform var(--transition);
+  width: 100%;
+}
+
+.btn-submit:hover {
+  background-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+/* ---------- Footer ---------- */
+footer {
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
+  text-align: center;
+  padding: 1.25rem 1rem;
+  font-size: 0.88rem;
+  margin-top: auto;
+}
+
+footer span {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ---------- Utility ---------- */
+.section-title {
+  font-size: 1.5rem;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+/* ---------- Media Query: Mobile (≤ 768px) ---------- */
+@media (width <= 768px) {
+  .navbar {
+    flex-direction: column;
+    height: auto;
+    padding: 1rem;
+    gap: 0.75rem;
+  }
+
+  .navbar ul {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.25rem;
+  }
+
+  .navbar ul li a {
+    display: block;
+    text-align: center;
+    padding: 0.55rem 1rem;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  main {
+    padding: 1.25rem 1rem;
+  }
+
+  .page-header h1 {
+    font-size: 1.5rem;
+  }
+}
